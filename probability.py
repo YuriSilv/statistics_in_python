@@ -24,3 +24,26 @@ def normal_inverse_cdf(p: float, mu: float = 0, sigma: float = 1, tolerance: flo
             hi_z = mid_z
     return mid_z
 
+def combination(x: int, y: int) -> int:
+    return math.factorial(x) / (math.factorial(y) * math.factorial(x-y))
+
+def binomial_prob(sucess:int, trials:int, prob: float):
+    return combination(trials, sucess) * prob**sucess * (1-prob)**(trials-sucess)
+
+def expected_value(xs: list, probs: list) -> float:
+    return sum([x*y for x,y in zip(xs, probs)])
+
+def bernoulli_var(p: float) -> float:
+    return p*(1-p)
+
+def bernoulli_std(p: float) -> float:
+    return math.sqrt(bernoulli_var(p))
+
+def bernoulli_expected_value(p: float, n:int) -> float:
+    return n*p
+
+def bernoulli_expected_var(p: float, n:int) -> float:
+    return n*p*(1-p)
+
+def poisson_dist(k: float, lamb: float):
+    return (lamb**k * math.exp(-lamb)) / math.factorial(k)
